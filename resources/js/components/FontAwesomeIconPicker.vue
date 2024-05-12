@@ -3,7 +3,7 @@
         <div id="icon-dropdown" class="btn btn-outline-secondary btn-sm" @click="showModal">
             <i :class="currentIcon"></i>
         </div>
-        <div id="fa-modal" :style="modalStyle">
+        <div id="fa-modal" :style="modalStyle" @click.self="hideModal">
             <div id="fa-selector">
                 <i id="selected-icon" :class="currentIcon"></i>
                 <div class="ri-search-box">
@@ -2542,6 +2542,9 @@ export default {
         },
         showModal:function () {
           this.modalShow = true;
+        },
+        hideModal:function () {
+            this.modalShow = false;
         }
     }
 }
