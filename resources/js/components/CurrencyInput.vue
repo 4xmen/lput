@@ -1,7 +1,7 @@
 <template>
     <div id="date">
-        <input @keyup="keyup" :id="idd" :placeholder="ptitle" :class="getClass" type="text" v-model="val" >
-        <input type="hidden" :name="pname" :value="noComma">
+        <input @keyup="keyup" :id="xid" :placeholder="xtitle" :class="getClass" type="text" v-model="val" >
+        <input type="hidden" :name="xname" :value="noComma">
     </div>
 </template>
 
@@ -33,19 +33,19 @@ export default {
         }
     },
     props:{
-        pname:{
+        xname:{
             default: "",
             type: String,
         },
-        ptitle:{
+        xtitle:{
             default: "",
             type: String,
         },
-        pvalue:{
+        xvalue:{
             default: "",
             type: String,
         },
-        idd:{
+        xid:{
             default: "",
             type: String,
         },
@@ -67,11 +67,11 @@ export default {
 
     },
     mounted() {
-        if (typeof this.pvalue == 'number'){
-            this.val = commafy(this.pvalue.toString());
+        if (typeof this.xvalue == 'number'){
+            this.val = commafy(this.xvalue.toString());
         }else{
 
-            this.val = commafy(this.pvalue);
+            this.val = commafy(this.xvalue);
         }
     },
     computed: {

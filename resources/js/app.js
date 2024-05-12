@@ -24,6 +24,9 @@ app.component('vue-jalali-calendar', VueJalaliCalendar);
 import CurrencyInput from './components/CurrencyInput.vue';
 app.component('currency-input', CurrencyInput);
 
+import RemixIconPicker from './components/RemixIconPicker.vue';
+app.component('remix-icon-picker', RemixIconPicker);
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

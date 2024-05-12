@@ -20,7 +20,22 @@
                             currency input sampe:
                         </div>
                         <div class="col-md-6">
-                            <currency-input pname="test" ptitle="Currency input sample" pvalue="10000"></currency-input>
+                            <currency-input xid="test" xname="test" xtitle="Currency input sample" xvalue="10000"></currency-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    Remix icon picker
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Remix icon picker
+                        </div>
+                        <div class="col-md-6">
+                            <remix-icon-picker xname="icon" xvalue="ri-twitter-x-line"></remix-icon-picker>
                         </div>
                     </div>
                 </div>
