@@ -18,6 +18,8 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 
+import VueJalaliCalendar from './components/vue-jalali-calendar.vue';
+app.component('vue-jalali-calendar', VueJalaliCalendar);
 
 /**
  * The following block of code may be used to automatically register your
