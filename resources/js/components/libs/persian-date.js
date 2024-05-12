@@ -92,6 +92,7 @@ class PersianDate {
         gm++;
         if (gm < 10)
             gm = '0' + gm;
+        gd =  gd < 10 ? '0'+gd: gd;
         return [gy, gm, gd];
     };
 

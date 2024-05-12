@@ -18,8 +18,11 @@ const app = createApp({});
 import ExampleComponent from './components/ExampleComponent.vue';
 app.component('example-component', ExampleComponent);
 
-import VueJalaliCalendar from './components/vue-jalali-calendar.vue';
+import VueJalaliCalendar from './components/vueJalaliCalendar.vue';
 app.component('vue-jalali-calendar', VueJalaliCalendar);
+
+import CurrencyInput from './components/CurrencyInput.vue';
+app.component('currency-input', CurrencyInput);
 
 /**
  * The following block of code may be used to automatically register your
