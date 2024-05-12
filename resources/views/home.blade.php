@@ -40,6 +40,21 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    Font awesome free icon picker
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Font awesome free icon picker
+                        </div>
+                        <div class="col-md-6">
+                            <awesome-icon-picker xname="icon" xvalue="fab fa-twitter"></awesome-icon-picker>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 @endsection
