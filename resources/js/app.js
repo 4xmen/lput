@@ -30,6 +30,8 @@ app.component('remix-icon-picker', RemixIconPicker);
 import FontAwesomeIconPicker from "./components/FontAwesomeIconPicker.vue";
 app.component('awesome-icon-picker', FontAwesomeIconPicker);
 
+import VueDatePicker from "./components/vueDatePicker.vue";
+app.component('vue-date-picker-input', VueDatePicker);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

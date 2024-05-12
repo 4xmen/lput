@@ -1,5 +1,5 @@
 <template>
-    <div id="date">
+    <div id="currency">
         <input @keyup="keyup" :id="xid" :placeholder="xtitle" :class="getClass" type="text" v-model="val" >
         <input type="hidden" :name="xname" :value="noComma">
     </div>
@@ -80,10 +80,10 @@ export default {
         },
         getClass: function () {
             if (this.err == true || ( typeof this.err == 'String' && this.err.trim() == '1' )) {
-                return 'form-control is-invalid';
+                return 'form-control is-invalid '+this.customClass;
             }
-            return 'form-control ';
-        }
+            return 'form-control '+this.customClass;
+        },
     },
     methods: {
         keyup:function () {
@@ -97,7 +97,5 @@ export default {
 </script>
 
 <style scoped>
-#date {
 
-}
 </style>

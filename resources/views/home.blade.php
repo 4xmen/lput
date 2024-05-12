@@ -3,8 +3,8 @@
 @section('content')
     <div class="container">
         <vue-jalali-calendar
-            year="1394" {{-- year --}}
-        month="4" {{-- month --}}
+            :year="1394" {{-- year --}}
+            :month="4" {{-- month --}}
             {{--        onSelect=""--}} {{-- your event o select --}}
             :texts='{"2015-07-10":"1","2015-07-09":"2","2015-08-10":"2"}' {{-- custom text each days --}}
         ></vue-jalali-calendar>
@@ -51,6 +51,21 @@
                         </div>
                         <div class="col-md-6">
                             <awesome-icon-picker xname="icon" xvalue="fab fa-twitter"></awesome-icon-picker>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    DatePicker
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            DatePicker
+                        </div>
+                        <div class="col-md-6">
+                            <vue-date-picker-input xname="datepicker" xtitle="DOB" xvalue=""></vue-date-picker-input>
                         </div>
                     </div>
                 </div>

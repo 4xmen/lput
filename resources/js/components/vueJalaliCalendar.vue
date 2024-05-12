@@ -69,7 +69,7 @@
 
 <script>
 
-import PersianDate from './libs/persian-date.js';
+import persianDate from './libs/persian-date.js';
 
 export default {
     name: "vue-a1-calendar",
@@ -124,15 +124,14 @@ export default {
         this.cYear = this.year;
         this.cMonth = this.month;
 
-        this.pDate = new PersianDate();
+        this.pDate = new persianDate();
 
     }
     ,
     computed: {
         monthStart() {
             return this.pDate.getPersianWeekDay(this.cYear + '/' + this.cMonth + '/1');
-        }
-        ,
+        },
         monthArray() {
             let r = [[]];
             let counter = this.monthStart;

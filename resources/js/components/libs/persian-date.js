@@ -145,6 +145,14 @@ class PersianDate {
         return [jy.toString(), jm, jd];
     };
 
+    convertDate2Persian = function (dt){
+        let date = dt.toLocaleString('fa-IR-u-nu-latn').split(',');
+        let result = date[0].split('/');
+        result[1] = this.make2number(result[1]);
+        result[2] = this.make2number(result[2]);
+        return result;
+
+    }
     make2number = function (instr) {
         let num = instr.toString();
         return num.length === 2 ? num : '0' + num;
@@ -192,6 +200,7 @@ class PersianDate {
         }
         return last;
     }
+
 }
 
 export default PersianDate;
