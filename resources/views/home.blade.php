@@ -65,7 +65,22 @@
                             DatePicker
                         </div>
                         <div class="col-md-6">
-                            <vue-date-picker-input xname="datepicker" xtitle="DOB" xvalue=""></vue-date-picker-input>
+                            <vue-datetime-picker-input xname="datepicker" xtitle="my custom placeholder" :xvalue="679097914" ></vue-datetime-picker-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    DateTimePicker
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            DateTimePicker
+                        </div>
+                        <div class="col-md-6">
+                            <vue-datetime-picker-input xname="datepicker" xtitle="DOB" :close-on-Select="true" :xvalue="" :timepicker="true" xshow="hpdatetime"></vue-datetime-picker-input>
                         </div>
                     </div>
                 </div>
