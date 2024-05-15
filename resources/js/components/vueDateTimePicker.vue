@@ -486,6 +486,7 @@ export default {
         },
         // select now time
         nowSelect() {
+            this.val = Math.floor(new Date() / 1000);
             this.select(this.makeDateObject(new Date()));
         },
         // handle select
@@ -776,6 +777,10 @@ export default {
         },
         triggerSwipe(direction) {
             // Update content padding based on swipe direction
+            let y = parseInt(this.peDate[0]);
+            if (this.tabIndex == 1){
+                y = parseInt(this.geDate[1]);
+            }
             switch (direction) {
                 case 'right':
                     this.previous();
@@ -784,10 +789,10 @@ export default {
                     this.next();
                     break;
                 case 'up':
-                    this.yearPicking(parseInt(this.geDate[0]) + 1);
+                    this.yearPicking(y + 1);
                     break;
                 case 'down':
-                    this.yearPicking(parseInt(this.peDate[0]) - 1);
+                    this.yearPicking(y - 1);
                     break;
             }
             this.endSwipe();
@@ -833,6 +838,7 @@ export default {
 
 #vue-datepicker {
     font-size: 12pt;
+    direction: ltr;
 }
 
 #dp-modal {
