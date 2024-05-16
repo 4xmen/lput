@@ -115,6 +115,21 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    Searchable multi select
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Searchable multi select
+                        </div>
+                        <div class="col-md-6">
+                            <searchable-multi-select :items='{{\App\Models\Category::all()}}' title-field="title" :xvalue='[3,11,7]' :close-on-Select="true"></searchable-multi-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 @endsection
