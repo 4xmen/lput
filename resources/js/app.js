@@ -30,8 +30,8 @@ app.component('remix-icon-picker', RemixIconPicker);
 import FontAwesomeIconPicker from "./components/FontAwesomeIconPicker.vue";
 app.component('awesome-icon-picker', FontAwesomeIconPicker);
 
-import vueDateTimePicker from "./components/vueDateTimePicker.vue";
-app.component('vue-datetime-picker-input', vueDateTimePicker);
+import vueDateRangePicker from "./components/vueDateRangePicker.vue";
+app.component('vue-date-range-picker-input', vueDateRangePicker);
 
 
 /**

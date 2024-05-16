@@ -85,6 +85,21 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    Date Range Picker
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Date Range Picker
+                        </div>
+                        <div class="col-md-6">
+                            <vue-date-range-picker-input xname="datepicker" xtitle="Trip range" :close-on-Select="false" :xvalue="" :timepicker="true" xshow="hpdatetime"></vue-date-range-picker-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 @endsection
