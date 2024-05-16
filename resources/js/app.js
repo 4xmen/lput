@@ -33,6 +33,9 @@ app.component('awesome-icon-picker', FontAwesomeIconPicker);
 import vueDateRangePicker from "./components/vueDateRangePicker.vue";
 app.component('vue-date-range-picker-input', vueDateRangePicker);
 
+import SerachableSelect from "./components/SearchableSelect.vue";
+app.component('searchable-select', SerachableSelect);
+
 
 /**
  * The following block of code may be used to automatically register your

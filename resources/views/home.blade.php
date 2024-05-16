@@ -100,6 +100,21 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    Searchable select
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Searchable select
+                        </div>
+                        <div class="col-md-6">
+                            <searchable-select :items='{{\App\Models\Category::all()}}' title-field="title" xvalue="3" :close-on-Select="true"></searchable-select>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 @endsection
