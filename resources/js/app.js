@@ -30,14 +30,17 @@ app.component('remix-icon-picker', RemixIconPicker);
 import FontAwesomeIconPicker from "./components/FontAwesomeIconPicker.vue";
 app.component('awesome-icon-picker', FontAwesomeIconPicker);
 
+import vueDateTimePicker from "./components/vueDateTimePicker.vue";
+app.component('vue-datetime-picker-input', vueDateTimePicker);
+
 import vueDateRangePicker from "./components/vueDateRangePicker.vue";
 app.component('vue-date-range-picker-input', vueDateRangePicker);
 
-import SerachableSelect from "./components/SearchableSelect.vue";
-app.component('searchable-select', SerachableSelect);
+import SearchableSelect from "./components/SearchableSelect.vue";
+app.component('searchable-select', SearchableSelect);
 
-import SerachableMultiSelect from "./components/SearchableMuiltiSelect.vue";
-app.component('searchable-multi-select', SerachableMultiSelect);
+import SearchableMultiSelect from "./components/SearchableMuiltiSelect.vue";
+app.component('searchable-multi-select', SearchableMultiSelect);
 
 
 /**
