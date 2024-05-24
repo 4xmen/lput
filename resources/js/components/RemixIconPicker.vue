@@ -2637,7 +2637,7 @@ export default {
     emits: ['update:modelValue'],
     props: {
         modelValue: {
-            default: NaN,
+            default: null,
         },
         xname:{
             default: '',
@@ -2655,7 +2655,7 @@ export default {
         },
     },
     mounted() {
-        if (!isNaN(this.modelValue)) {
+        if (this.modelValue != null) {
             this.currentIcon = this.modelValue;
         }else{
             this.currentIcon = this.xvalue;
@@ -2674,7 +2674,7 @@ export default {
         selecting(i){
             this.currentIcon = i;
             this.modalShow = false;
-            if (!isNaN(this.modelValue)) {
+            if (this.modelValue != null) {
                 this.$emit('update:modelValue', i);
             }
             this.onSelect(i);
@@ -2685,7 +2685,8 @@ export default {
         hideModal:function () {
           this.modalShow = false;
         }
-    }
+    },
+
 }
 </script>
 

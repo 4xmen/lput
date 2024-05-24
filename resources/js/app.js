@@ -39,7 +39,7 @@ app.component('vue-date-range-picker-input', vueDateRangePicker);
 import SearchableSelect from "./components/SearchableSelect.vue";
 app.component('searchable-select', SearchableSelect);
 
-import SearchableMultiSelect from "./components/SearchableMuiltiSelect.vue";
+import SearchableMultiSelect from "./components/searchableMultiSelect.vue";
 app.component('searchable-multi-select', SearchableMultiSelect);
 
 import Increment from "./components/Increment.vue";

@@ -65,7 +65,7 @@
                             DatePicker
                         </div>
                         <div class="col-md-6">
-                            <vue-datetime-picker-input xname="datepicker" xtitle="my custom placeholder" :xvalue="679097914" ></vue-datetime-picker-input>
+                            <vue-datetime-picker-input xname="datepicker" xtitle="DOB" :xvalue="679097914" :close-on-Select="true"></vue-datetime-picker-input>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
                             DateTimePicker
                         </div>
                         <div class="col-md-6">
-                            <vue-datetime-picker-input xname="datepicker" xtitle="DOB" :close-on-Select="true" :xvalue="" :timepicker="true" xshow="hpdatetime"></vue-datetime-picker-input>
+                            <vue-datetime-picker-input xname="datepicker" xtitle="My custom placeholder"  :xvalue="" :timepicker="true" xshow="hpdatetime"></vue-datetime-picker-input>
                         </div>
                     </div>
                 </div>
@@ -146,5 +146,7 @@
                 </div>
             </div>
         </form>
+
+        <example-component  :cats='{{\App\Models\Category::all(['id','title'])}}'></example-component>
     </div>
 @endsection

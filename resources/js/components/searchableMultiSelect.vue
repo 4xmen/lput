@@ -53,7 +53,7 @@ export default {
     emits: ['update:modelValue'],
     props: {
         modelValue: {
-            default: NaN,
+            default: 'nop',
         },
         items: {
             required: true,
@@ -101,7 +101,7 @@ export default {
         },
     },
     mounted() {
-        if (!isNaN(this.modelValue)) {
+        if (this.modelValue != 'nop') {
             this.val = this.modelValue;
         }else{
             this.val = this.xvalue;
@@ -140,7 +140,7 @@ export default {
     },
     watch: {
         val(newValue) {
-            if (!isNaN(this.modelValue)) {
+            if (this.modelValue != 'nop') {
                 this.$emit('update:modelValue', newValue);
             }
         }

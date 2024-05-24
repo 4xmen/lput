@@ -290,7 +290,7 @@ export default {
     emits: ['update:modelValue'],
     props: {
         modelValue: {
-            default: NaN,
+            default: 'nop',
         },
         xvalue: {
             default: null,
@@ -355,7 +355,7 @@ export default {
             dt = new Date(parseInt(this.xvalue) * 1000);
 
 
-            if (!isNaN(this.modelValue)) {
+            if (this.modelValue != 'nop') {
                 if (this.modelValue == null || this.modelValue == '' || this.modelValue == 'null') {
                     dt = new Date();
                     this.val = null;
@@ -903,7 +903,7 @@ export default {
     },
     watch: {
         vals(newValue) {
-            if (!isNaN(this.modelValue)) {
+            if (this.modelValue != 'nop') {
                 this.$emit('update:modelValue', newValue);
             }
         }

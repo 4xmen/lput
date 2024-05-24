@@ -35,8 +35,8 @@ export default {
     emits: ['update:modelValue'],
     props: {
         modelValue: {
-            type: [Number, NaN],
-            default: NaN,
+            type: [Number, String],
+            default: 'nop',
         },
         xname: {
             default: "",
@@ -73,8 +73,7 @@ export default {
     },
     mounted() {
 
-        if (!isNaN(this.modelValue)) {
-
+        if (this.modelValue !== 'nop') {
 
             if (typeof this.modelValue == 'number') {
                 this.val = commafy(this.modelValue.toString());
@@ -95,7 +94,7 @@ export default {
     computed: {
         noComma: function () {
             const n = uncommafy(this.val);
-            if (!isNaN(this.modelValue)) {
+            if (this.modelValue != null) {
                 this.$emit('update:modelValue', n);
             }
             return n;
