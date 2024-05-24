@@ -208,7 +208,8 @@
             </div>
         </div>
         <div id="datepicker">
-            <input @focus="modalShow = true" :id="xid" :placeholder="xtitle" :class="getClass" type="text"
+            <input @focus="modalShow = true" :id="xid" :placeholder="xtitle"
+                   :class="getClass" type="text"
                    :value="(val == null || val == ''?'':fullData[xshow])">
             <input type="hidden" :name="xname" :value="val">
         </div>
@@ -822,6 +823,24 @@ export default {
             }
         },
 
+        selfUpdate(){
+            let dt;
+            // check value changed by user or not, then ignore xvalue
+            if (this.val == null) {
+                dt = new Date(parseInt(this.xvalue) * 1000);
+                if (this.xvalue == null || this.xvalue == '' || this.xvalue == 'null') {
+                    dt = new Date();
+                    this.val = null;
+                    this.current = Math.floor(new Date() / 1000);
+                } else {
+                    this.current = new Date(parseInt(this.xvalue));
+                    this.val = this.xvalue;
+                }
+            } else {
+                this.current = this.val;
+            }
+            // this.fullData = this.makeDateObject(dt);
+        },
         // hide modal
         hideModal() {
             if (this.canCloseModal) {

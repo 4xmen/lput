@@ -130,6 +130,21 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    Increment
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Searchable multi select
+                        </div>
+                        <div class="col-md-6">
+                            <increment v-model="value"></increment>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
     </div>
 @endsection

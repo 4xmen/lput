@@ -7,6 +7,7 @@
 
 <script>
 
+import Increment from "./Increment.vue";
 function commafy( num ) {
     if (typeof  num !== 'string'){
         return '';
@@ -26,10 +27,11 @@ function  uncommafy(txt){
 }
 export default {
     name: "curency-input",
-    components: {},
+    components: {Increment},
     data: () => {
         return {
             val:'',
+            z:1,
         }
     },
     props:{

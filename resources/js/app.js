@@ -42,6 +42,9 @@ app.component('searchable-select', SearchableSelect);
 import SearchableMultiSelect from "./components/SearchableMuiltiSelect.vue";
 app.component('searchable-multi-select', SearchableMultiSelect);
 
+import Increment from "./components/Increment.vue";
+app.component('increment', Increment);
+
 
 /**
  * The following block of code may be used to automatically register your
