@@ -110,7 +110,7 @@
                             Searchable select
                         </div>
                         <div class="col-md-6">
-                            <searchable-select :items='{{\App\Models\Category::all()}}' title-field="title" xvalue="3" :close-on-Select="true"></searchable-select>
+                            <searchable-select :items='{{\App\Models\Category::all(['id','title'])}}' title-field="title" xvalue="3" :close-on-Select="true"></searchable-select>
                         </div>
                     </div>
                 </div>
@@ -125,7 +125,7 @@
                             Searchable multi select
                         </div>
                         <div class="col-md-6">
-                            <searchable-multi-select :items='{{\App\Models\Category::all()}}' title-field="title" :xvalue='[3,11,7]' :close-on-Select="true"></searchable-multi-select>
+                            <searchable-multi-select :items='{{\App\Models\Category::all(['id','title'])}}' title-field="title" :xvalue='[3,11,7]' :close-on-Select="true"></searchable-multi-select>
                         </div>
                     </div>
                 </div>

@@ -194,9 +194,11 @@ export default {
     display: inline-block;
     padding: 0 4px 0 20px ;
     margin-right: 5px;
-    background: deepskyblue;
+    background: #282c34dd;
     color: white;
     position: relative;
+    border-radius: 3px;
+
 
 }
 
