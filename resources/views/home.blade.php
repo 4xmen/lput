@@ -140,7 +140,7 @@
                             Searchable multi select
                         </div>
                         <div class="col-md-6">
-                            <increment v-model="value"></increment>
+                            <increment :xvalue="1"></increment>
                         </div>
                     </div>
                 </div>

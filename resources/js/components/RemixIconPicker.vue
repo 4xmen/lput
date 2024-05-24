@@ -2634,7 +2634,11 @@ export default {
             modalShow: false,
         }
     },
+    emits: ['update:modelValue'],
     props: {
+        modelValue: {
+            default: NaN,
+        },
         xname:{
             default: '',
             type: String,
@@ -2643,10 +2647,19 @@ export default {
             default: '',
             type: String,
         },
+        onSelect: {
+            default: function () {
 
+            },
+            type: Function,
+        },
     },
     mounted() {
-        this.currentIcon = this.xvalue;
+        if (!isNaN(this.modelValue)) {
+            this.currentIcon = this.modelValue;
+        }else{
+            this.currentIcon = this.xvalue;
+        }
     },
     computed: {
         modalStyle:function (){
@@ -2661,6 +2674,10 @@ export default {
         selecting(i){
             this.currentIcon = i;
             this.modalShow = false;
+            if (!isNaN(this.modelValue)) {
+                this.$emit('update:modelValue', i);
+            }
+            this.onSelect(i);
         },
         showModal:function () {
           this.modalShow = true;

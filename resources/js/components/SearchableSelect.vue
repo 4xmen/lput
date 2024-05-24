@@ -49,7 +49,11 @@ export default {
             val:'',
         }
     },
+    emits: ['update:modelValue'],
     props: {
+        modelValue: {
+            default: NaN,
+        },
         items:{
             required: true,
             default: [],
@@ -100,7 +104,11 @@ export default {
         },
     },
     mounted() {
-        this.val = this.xvalue;
+        if (!isNaN(this.modelValue)) {
+            this.val = this.modelValue;
+        }else{
+            this.val = this.xvalue;
+        }
     },
     computed: {
         getClass: function () {
@@ -126,6 +134,13 @@ export default {
         },
         showModal(){
             this.modalShow = true;
+        }
+    },
+    watch: {
+        val(newValue) {
+            if (!isNaN(this.modelValue)) {
+                this.$emit('update:modelValue', newValue);
+            }
         }
     }
 }

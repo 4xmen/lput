@@ -1,15 +1,13 @@
 <template>
     <div id="currency">
-        <input @keyup="keyup" :id="xid" :placeholder="xtitle" :class="getClass" type="text" v-model="val" >
+        <input @keyup="keyup" :id="xid" :placeholder="xtitle" :class="getClass" type="text" v-model="val">
         <input type="hidden" :name="xname" :value="noComma">
     </div>
 </template>
-
 <script>
 
-import Increment from "./Increment.vue";
-function commafy( num ) {
-    if (typeof  num !== 'string'){
+function commafy(num) {
+    if (typeof num !== 'string') {
         return '';
     }
     let str = uncommafy(num.toString()).split('.');
@@ -22,45 +20,50 @@ function commafy( num ) {
     return str.join('.');
 }
 
-function  uncommafy(txt){
+function uncommafy(txt) {
     return txt.split(',').join('');
 }
+
 export default {
     name: "curency-input",
-    components: {Increment},
+    components: {},
     data: () => {
         return {
-            val:'',
-            z:1,
+            val: ''
         }
     },
-    props:{
-        xname:{
+    emits: ['update:modelValue'],
+    props: {
+        modelValue: {
+            type: [Number, NaN],
+            default: NaN,
+        },
+        xname: {
             default: "",
             type: String,
         },
-        xtitle:{
+        xtitle: {
             default: "",
             type: String,
         },
-        xvalue:{
+        xvalue: {
             default: "",
             type: String,
         },
-        xid:{
+        xid: {
             default: "",
             type: String,
         },
-        customClass:{
+        customClass: {
             default: "",
             type: String,
         },
-        err:{
+        err: {
             default: false,
             type: Boolean,
         },
 
-        updateKey:{
+        updateKey: {
             default: function () {
 
             },
@@ -69,29 +72,46 @@ export default {
 
     },
     mounted() {
-        if (typeof this.xvalue == 'number'){
-            this.val = commafy(this.xvalue.toString());
-        }else{
 
-            this.val = commafy(this.xvalue);
+        if (!isNaN(this.modelValue)) {
+
+
+            if (typeof this.modelValue == 'number') {
+                this.val = commafy(this.modelValue.toString());
+            } else {
+                this.val = commafy(this.modelValue);
+            }
+        } else {
+
+            if (typeof this.xvalue == 'number') {
+                this.val = commafy(this.xvalue.toString());
+            } else {
+                this.val = commafy(this.xvalue);
+            }
         }
+
+
     },
     computed: {
-        noComma:function () {
-          return uncommafy(this.val);
+        noComma: function () {
+            const n = uncommafy(this.val);
+            if (!isNaN(this.modelValue)) {
+                this.$emit('update:modelValue', n);
+            }
+            return n;
         },
         getClass: function () {
-            if (this.err == true || ( typeof this.err == 'String' && this.err.trim() == '1' )) {
-                return 'form-control is-invalid '+this.customClass;
+            if (this.err == true || (typeof this.err == 'String' && this.err.trim() == '1')) {
+                return 'form-control is-invalid ' + this.customClass;
             }
-            return 'form-control '+this.customClass;
+            return 'form-control ' + this.customClass;
         },
     },
     methods: {
-        keyup:function () {
+        keyup: function () {
             this.val = commafy(this.val);
-            if (typeof this.update === 'function' ){
-                this.update(this.updateKey,parseInt(this.noComma));
+            if (typeof this.update === 'function') {
+                this.update(this.updateKey, parseInt(this.noComma));
             }
         },
     }

@@ -287,7 +287,11 @@ export default {
             gMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         }
     },
+    emits: ['update:modelValue'],
     props: {
+        modelValue: {
+            default: NaN,
+        },
         xvalue: {
             default: null,
             type: Number,
@@ -349,14 +353,31 @@ export default {
         // check value changed by user or not, then ignore xvalue
         if (this.val == null) {
             dt = new Date(parseInt(this.xvalue) * 1000);
-            if (this.xvalue == null || this.xvalue == '' || this.xvalue == 'null') {
-                dt = new Date();
-                this.val = null;
-                this.current = Math.floor(new Date() / 1000);
-            } else {
-                this.current = new Date(parseInt(this.xvalue));
-                this.val = this.xvalue;
+
+
+            if (!isNaN(this.modelValue)) {
+                if (this.modelValue == null || this.modelValue == '' || this.modelValue == 'null') {
+                    dt = new Date();
+                    this.val = null;
+                    this.current = Math.floor(new Date() / 1000);
+                } else {
+                    this.current = new Date(parseInt(this.modelValue));
+                    this.val = this.modelValue;
+                }
+            }else{
+                if (this.xvalue == null || this.xvalue == '' || this.xvalue == 'null') {
+                    dt = new Date();
+                    this.val = null;
+                    this.current = Math.floor(new Date() / 1000);
+                } else {
+                    this.current = new Date(parseInt(this.xvalue));
+                    this.val = this.xvalue;
+                }
             }
+
+
+
+
         } else {
             this.current = this.val;
         }
@@ -880,6 +901,13 @@ export default {
         },
         chunkArray: chunkArray,
     },
+    watch: {
+        vals(newValue) {
+            if (!isNaN(this.modelValue)) {
+                this.$emit('update:modelValue', newValue);
+            }
+        }
+    }
 }
 </script>
 

@@ -210,7 +210,7 @@
         <div id="datepicker">
             <input @focus="modalShow = true" :id="xid" :placeholder="xtitle"
                    :class="getClass" type="text"
-                   :value="(val == null || val == ''?'':fullData[xshow])">
+                   :value="(val == null || val == ''?'':selectedDateTime)">
             <input type="hidden" :name="xname" :value="val">
         </div>
     </div>
@@ -273,7 +273,11 @@ export default {
             gMonths: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         }
     },
+    emits: ['update:modelValue'],
     props: {
+        modelValue: {
+            default: NaN,
+        },
         xvalue: {
             default: null,
             type: Number,
@@ -338,15 +342,31 @@ export default {
         let dt ;
         // check value changed by user or not, then ignore xvalue
         if (this.val == null) {
-            dt = new Date(parseInt(this.xvalue) * 1000);
-            if (this.xvalue == null || this.xvalue == '' || this.xvalue == 'null') {
-                dt = new Date();
-                this.val = null;
-                this.current = Math.floor(new Date() / 1000);
-            } else {
-                this.current = new Date(parseInt(this.xvalue));
-                this.val = this.xvalue;
+
+
+            if (!isNaN(this.modelValue)) {
+                dt = new Date(parseInt(this.modelValue) * 1000);
+                if (this.modelValue == null || this.modelValue == '' || this.modelValue == 'null') {
+                    dt = new Date();
+                    this.val = null;
+                    this.current = Math.floor(new Date() / 1000);
+                } else {
+                    this.current = new Date(parseInt(this.modelValue));
+                    this.val = this.modelValue;
+                }
+            }else{
+                dt = new Date(parseInt(this.xvalue) * 1000);
+                if (this.xvalue == null || this.xvalue == '' || this.xvalue == 'null') {
+                    dt = new Date();
+                    this.val = null;
+                    this.current = Math.floor(new Date() / 1000);
+                } else {
+                    this.current = new Date(parseInt(this.xvalue));
+                    this.val = this.xvalue;
+                }
             }
+
+
         } else {
             this.current = this.val;
         }
@@ -357,6 +377,11 @@ export default {
         // }
     },
     computed: {
+        selectedDateTime(){
+            // fullData[xshow]
+            const dt = new Date(this.val * 1000);
+            return this.makeDateObject(dt)[this.xshow];
+        },
         // get input class
         getClass: function () {
             if (this.err == true || (typeof this.err == 'String' && this.err.trim() == '1')) {
@@ -599,10 +624,10 @@ export default {
                 day: this.pDate.make2number(dt.getDate()), // day
                 pDay: this.pDate.convertDate2Persian(dt)[2], // persian date
                 date: dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate(), // gregorian date
-                datetime: dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate() + ' ' + this.pDate.make2number(dt.getHours()) + ':' + this.pDate.make2number(dt.getMinutes()), // gregorian datetime
-                pdatetime: this.pDate.convertDate2Persian(dt).join('/') + ' ' + this.pDate.make2number(dt.getHours()) + ':' + this.pDate.make2number(dt.getMinutes()), // persian date
+                datetime: dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate() + ' ' + this.pDate.make2number(this.cTime[0]) + ':' + this.pDate.make2number(this.cTime[1]), // gregorian datetime
+                pdatetime: this.pDate.convertDate2Persian(dt).join('/') + ' ' + this.pDate.make2number(this.cTime[0]) + ':' + this.pDate.make2number(this.cTime[1]), // persian date
                 pdate: this.pDate.convertDate2Persian(dt).join('/'),  // persian date
-                hpdatetime: this.pDate.parseHindi(this.pDate.convertDate2Persian(dt).join('/') + ' ' + this.pDate.make2number(dt.getHours()) + ':' + this.pDate.make2number(dt.getMinutes())), // persian date hindi number
+                hpdatetime: this.pDate.parseHindi(this.pDate.convertDate2Persian(dt).join('/') + ' ' + this.pDate.make2number(this.cTime[0]) + ':' + this.pDate.make2number(this.cTime[1])), // persian date hindi number
                 hpdate: this.pDate.parseHindi(this.pDate.convertDate2Persian(dt).join('/')),  // persian date hindi number
                 weekDay: dt.getDay(), // week day
                 class: cls, // class of d
@@ -849,6 +874,13 @@ export default {
         },
         chunkArray: chunkArray,
     },
+    watch: {
+        val(newValue) {
+            if (!isNaN(this.modelValue)) {
+                this.$emit('update:modelValue', newValue);
+            }
+        }
+    }
 }
 </script>
 
