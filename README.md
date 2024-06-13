@@ -9,7 +9,7 @@
 با کمترین وابستگی (تنها وابستگی های این پروژه فونت‌ها می‌باشند)
 </p>
 <h2 dir="rtl">
-معرفی کامپوننت های توسعه یاته تا کنون
+معرفی کامپوننت های توسعه یافته تا کنون
 </h2>
 
 
@@ -378,6 +378,6 @@ npm run dev
 php artsian serv
 ```
 
-<div style="text-align: center">
+<div align="center">
      Developed With Love ! ❤️
 </div>
