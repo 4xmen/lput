@@ -9,7 +9,7 @@
                     <ul id="vue-search-list" class="list-group list-group-flush">
                         <template v-for="item in items">
                         <li
-                            v-if="(q != '' && item[titleField].indexOf(q) != -1) || (q == '')"
+                            v-if="(q != '' && item[titleField].toLocaleLowerCase().indexOf(q.toLocaleLowerCase()) != -1) || (q == '')"
                             @click="selecting(item[valueField])"
                             :class="`list-group-item ${val == item[valueField]?'selected':''}`">
                             {{item[titleField]}}

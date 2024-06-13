@@ -49,6 +49,12 @@
                 {{ i }}
             </span>
         </div>
+        <div class="p-2">
+           <tag-input v-model="tags"></tag-input>
+            <span>
+                {{ tags }}
+            </span>
+        </div>
 
     </div>
 </template>
@@ -62,10 +68,11 @@ import searchableMultiSelect from "./searchableMultiSelect.vue";
 import vueDateTimePicker from "./vueDateTimePicker.vue";
 import vueDateRangePicker from "./vueDateRangePicker.vue";
 import Increment from "./Increment.vue";
+import TagInput from "./TagInput.vue";
 export default {
     name: "example",
     components: {
-        CurrencyInput, fontAwesomeIconPicker, remixIconPicker,Increment,
+        CurrencyInput, fontAwesomeIconPicker, remixIconPicker,Increment,TagInput,
         searchableSelect, searchableMultiSelect, vueDateRangePicker, vueDateTimePicker
     },
     data: () => {
@@ -79,6 +86,7 @@ export default {
             dp: null,
             dpt: null,
             i:7,
+            tags:'hello,world'
         }
     },
     props: {

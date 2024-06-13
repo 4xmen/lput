@@ -145,6 +145,21 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    Tag input
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            Searchable multi select
+                        </div>
+                        <div class="col-md-6">
+                            <tag-input :xvalue=""></tag-input>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </form>
 
         <example-component  :cats='{{\App\Models\Category::all(['id','title'])}}'></example-component>

@@ -46,6 +46,10 @@ import Increment from "./components/Increment.vue";
 app.component('increment', Increment);
 
 
+import TagInput from "./components/TagInput.vue";
+app.component('tag-input', TagInput);
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
