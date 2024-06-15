@@ -346,6 +346,14 @@ export default {
             default: false,
             type: Boolean,
         },
+        xmax: {
+            default: null,
+            type: Number,
+        },
+        xmin: {
+            default: null,
+            type: Number,
+        },
     },
     mounted() {
         this.pDate = new persianDate();
@@ -375,6 +383,9 @@ export default {
                 }
             }
 
+            // tab fix
+            this.tabIndex = parseInt(this.defTab);
+
 
 
 
@@ -389,7 +400,7 @@ export default {
     },
     computed: {
         vals(){
-          return JSON.stringify([this.startDate,this.endDate]);
+            return JSON.stringify([this.startDate,this.endDate]);
         },
         // get input class
         getClass: function () {
@@ -532,6 +543,12 @@ export default {
         },
         // handle select
         select(obj) {
+            if (this.xmax != null && obj.unix > this.xmax ){
+                return ;
+            }
+            if (this.xmin != null && obj.unix < this.xmin ){
+                return ;
+            }
             if (this.isSwiping) {
                 return false;
             }
@@ -694,19 +711,26 @@ export default {
         },
         // is selected this td
         isActive(obj) {
+            let r = '';
             if (obj.unix == this.startDate) {
-                return 'active-selected';
+                r =  'active-selected';
             }
             if (this.endDate != null){
                 if (obj.unix > this.startDate && obj.unix <= this.endDate){
-                    return 'active-selected';
+                    r =  'active-selected';
                 }
             }else if (this.startDate != null && this.hoverDate != null){
                 if (obj.unix > this.startDate && obj.unix <= this.hoverDate){
-                    return 'active-selected';
+                    r =  'active-selected';
                 }
             }
-            return '';
+            if (this.xmax != null && obj.unix > this.xmax ){
+                r += ' disabled-date';
+            }
+            if (this.xmin != null && obj.unix < this.xmin ){
+                r += ' disabled-date';
+            }
+            return r;
         },
         // select hour
         pickHour(i, ignore = false) {
@@ -883,15 +907,15 @@ export default {
         },
 
         convertToHuman(unix){
-          if (unix == null || unix == ''){
-              return '';
-          }
-          let dt = new Date(unix * 1000);
-          if (this.tabIndex == 0){
-             return this.pDate.parseHindi( this.pDate.convertDate2Persian(dt).join('/'));
-          }else{
-              return dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate();
-          }
+            if (unix == null || unix == ''){
+                return '';
+            }
+            let dt = new Date(unix * 1000);
+            if (this.tabIndex == 0){
+                return this.pDate.parseHindi( this.pDate.convertDate2Persian(dt).join('/'));
+            }else{
+                return dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate();
+            }
         },
         // hide modal
         hideModal() {
@@ -1214,5 +1238,8 @@ export default {
     right: 5px;
     top: 5px;
     font-size: 25px;
+}
+.disabled-date{
+    background: silver;
 }
 </style>

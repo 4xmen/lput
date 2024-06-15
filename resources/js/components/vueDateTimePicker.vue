@@ -282,6 +282,14 @@ export default {
             default: null,
             type: Number,
         },
+        xmax: {
+            default: null,
+            type: Number,
+        },
+        xmin: {
+            default: null,
+            type: Number,
+        },
         xshow: {
             default: 'pdate', // show value
             type: String,
@@ -365,6 +373,8 @@ export default {
                     this.val = this.xvalue;
                 }
             }
+            // tab fix
+            this.tabIndex = parseInt(this.defTab);
 
 
         } else {
@@ -517,6 +527,13 @@ export default {
         },
         // handle select
         select(obj) {
+
+            if (this.xmax != null && obj.unix > this.xmax ){
+                return ;
+            }
+            if (this.xmin != null && obj.unix < this.xmin ){
+                return ;
+            }
             if (this.isSwiping) {
                 return false;
             }
@@ -669,10 +686,17 @@ export default {
         // is selected this td
         isActive(obj) {
             let dt = new Date(this.val * 1000);
+            let r = '';
             if (dt.getFullYear() + '-' + dt.getMonth() + '-' + dt.getDate() == obj.date) {
-                return 'active-selected';
+                r = 'active-selected';
             }
-            return '';
+            if (this.xmax != null && obj.unix > this.xmax ){
+                r += ' disabled-date';
+            }
+            if (this.xmin != null && obj.unix < this.xmin ){
+                r += ' disabled-date';
+            }
+            return r;
         },
         // select hour
         pickHour(i, ignore = false) {
@@ -1185,5 +1209,8 @@ export default {
     right: 5px;
     top: 5px;
     font-size: 25px;
+}
+.disabled-date{
+    background: silver;
 }
 </style>

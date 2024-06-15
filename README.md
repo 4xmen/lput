@@ -376,7 +376,7 @@ php artisan migrate:fresh --seed
 ```bash
 npm run dev
 php artsian serv
-```
+``` 
 
 <div align="center">
      Developed With Love ! ❤️
